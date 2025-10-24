@@ -27,7 +27,7 @@ window.onscroll = () => {
     navbar.classList.remove('active');
 }
 const typed = new Typed('.multiple-text', {
-    strings: ['DevOps Engineer', 'Backend Developer', 'Cloud Engineer', 'Software Engineer'],
+    strings: ['Software Engineer','Backend Developer', 'Aspiring DevOps Engineer'],
     typeSpeed: 80,
     backSpeed: 80,
     backDelay: 1200,
