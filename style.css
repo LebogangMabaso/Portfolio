@@ -38,12 +38,11 @@ section{
     padding: 10rem 9% 2rem;
 }
 
-/* Header Section Code */
 .header {
     position: fixed;
     width: 100%;
     top: 0;
-    right: 0;
+    left: 0;
     z-index: 100;
     display: flex;
     align-items: center;
@@ -55,7 +54,8 @@ section{
     box-shadow: 0 2px 10px rgba(0, 127, 115, 0.2);
 }
 
-.logo{
+/* Logo on the left */
+.logo {
     font-size: 3rem;
     color: var(--bg-color);
     font-weight: 700;
@@ -63,28 +63,63 @@ section{
     transition: 0.3s ease; 
 }
 
-.logo:hover{
-    transform: scale(1.05);
+/* Hamburger on the left */
+#menu-icon {
+    font-size: 3.6rem;
+    color: var(--bg-color);
+    cursor: pointer;
+    display: none;
+    order: -1; /* ensures it's before menu items */
+    margin-right: 1rem;
 }
 
-.navbar a{
+/* Navbar menu on the right */
+.navbar {
+    display: flex;
+    align-items: center;
+    gap: 4rem;
+    margin-left: auto; /* pushes it to the right */
+}
+
+.navbar a {
     font-size: 1.9rem;
     color: var(--bg-color);
-    margin-left: 4rem;
     font-weight: 700;
     transition: 0.3s ease;
 }
 
 .navbar a:hover,
 .navbar a.active {
-    color:var(--text-color);
+    color: var(--text-color);
 }
 
-#menu-icon{
-    font-size: 3.6rem;
-    color: var(--bg-color);
-    cursor: pointer;
-    display:none;
+/* Mobile Styles */
+@media (max-width: 991px) {
+    #menu-icon {
+        display: block;
+    }
+
+    .navbar {
+        position: absolute;
+        top: 100%;
+        left: -100%; /* slides in from left now */
+        width: 255px;
+        min-height: 100vh;
+        flex-direction: column;
+        background: var(--main-color);
+        transition: all 0.5s ease;
+        backdrop-filter: blur(10px);
+    }
+
+    .navbar.active {
+        left: 0;
+    }
+
+    .navbar a {
+        display: block;
+        padding: 17px;
+        font-size: 22px;
+    }
 }
 
 /* Home Section Code */
@@ -276,12 +311,17 @@ span{
 }
 
 .services-box i{
-    font-size: 7rem;
+    font-size: 8rem;
     color: var(--main-color);
 }
 
 .services-box h3{
-    font-size: 2.6rem;
+    font-size: 2.4rem;
+}
+.services-box h4{
+    font-size: 1.8rem;
+    margin-top: 1rem;
+    font-style: italic;
 }
 
 .services-box p{
@@ -564,25 +604,29 @@ span{
     #menu-icon {
         display: block;
     }
-    .navbar{
-        position: absolute;
-        top: 100%;
-        right: -100%;
-        width: 255px;
-        min-height: 100vh;
-        display: flex;
-        flex-direction: column;
-        background: var(--main-color);
-        transition: all 0.5s ease;
-        backdrop-filter: blur(10px);
-    }
+.navbar {
+    position: absolute;
+    top: 100%;
+    left: -100%;
+    width: 255px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background: var(--main-color);
+    transition: all 0.5s ease;
+    backdrop-filter: blur(10px);
+}
+
+.navbar.active {
+    left: 0;
+}
     .navbar a{
         display: block;
         padding: 17px;
         font-size: 22px;
     }
     .navbar.active{
-        right: 0;
+        left: 0;
     }
     .home {
         flex-direction: column;
